@@ -1,5 +1,5 @@
 import React from "react";
-import Ticket from "./Ticket.js";
+import Ticket from "./Ticket.jsx";
 
 const mainTicketList = [
   {
