@@ -63,5 +63,23 @@ describe('ticketListReducer', () => {
     });
   });
 
+  test('Should successfully update a ticket', () => {
+    const { name, location, issue, id } = ticketData;
+    action = {
+      type: 'ADD_TICKET',
+      names: name,
+      location: location,
+      issue: issue,
+      id: id
+    };
+    expect(ticketListReducer({}, action)).toEqual({
+      [id]: {
+        names: name,
+        location: location,
+        issue: issue,
+        id: id
+      }
+    });
+  });
   
 });
