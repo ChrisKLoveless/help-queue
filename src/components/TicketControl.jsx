@@ -19,7 +19,7 @@ class TicketControl extends React.Component {
 
   handleEditingTicketInList = (ticketToEdit) => {
     const { dispatch } = this.props;
-    const action = a.addTicket();
+    const action = a.addTicket(ticketToEdit);
     dispatch(action);
     this.setState({
       editing: false,
@@ -48,7 +48,7 @@ class TicketControl extends React.Component {
 
   handleAddingNewTicketToList = (newTicket) => {
     const { dispatch } = this.props;
-    const action = a.addTicket();
+    const action = a.addTicket(newTicket);
     dispatch(action);
     const action2 = a.toggleForm();
     dispatch(action2);
