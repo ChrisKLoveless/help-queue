@@ -21,7 +21,7 @@ class TicketControl extends React.Component {
   componentDidMount() {
     this.waitTimeUpdateTimer = setInterval(() =>
       this.updateTicketElapsedWaitTime(),
-      1000
+      60000
     );
   }
 
@@ -35,7 +35,14 @@ class TicketControl extends React.Component {
   }
 
   updateTicketElapsedWaitTime = () => {
-    console.log("tick");
+    const { dispatch } = this.props;
+    Object.values(this.props.mainTicketList).forEach(ticket => {
+      const newFormattedWaitTime = formatDistanceToNow(ticket.timeOpen, {
+        addSuffix: true
+      });
+      const action = a.updateTime(ticket.id, newFormattedWaitTime);
+      dispatch(action);
+    });
   }
 
   handleEditingTicketInList = (ticketToEdit) => {
